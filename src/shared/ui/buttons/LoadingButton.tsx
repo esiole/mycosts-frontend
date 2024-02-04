@@ -18,6 +18,7 @@ export const LoadingButton = ({ caption, onClick }: LoadingButtonProps) => {
     return (
         <MuiLoadingButton
             loading={isLoading}
+            type={"button"}
             variant="contained"
             onClick={handleClick}
         >
