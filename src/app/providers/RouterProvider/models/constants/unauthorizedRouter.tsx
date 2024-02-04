@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import LoginPage from "../../pages/LoginPage";
+import LoginPage from "../../../../../pages/LoginPage";
 
-const unauthorizedRouter = createBrowserRouter([
+export const unauthorizedRouter = createBrowserRouter([
     {
         path: "/login",
         element: <LoginPage />,
@@ -11,5 +11,3 @@ const unauthorizedRouter = createBrowserRouter([
         element: <Navigate replace to="/login" />,
     },
 ]);
-
-export default unauthorizedRouter;

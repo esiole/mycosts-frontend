@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 
-const Layout = () => {
+export const Layout = () => {
     return (
         <>
             <div>Main layout</div>
@@ -8,5 +8,3 @@ const Layout = () => {
         </>
     );
 };
-
-export default Layout;

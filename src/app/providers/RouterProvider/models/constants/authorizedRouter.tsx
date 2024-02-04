@@ -1,10 +1,10 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import ReceiptsPage from "../../pages/ReceiptsPage";
-import ProductsPage from "../../pages/ProductsPage";
-import ProductCategoriesPage from "../../pages/ProductCategoriesPage";
-import Layout from "./Layout";
+import ReceiptsPage from "../../../../../pages/ReceiptsPage";
+import ProductsPage from "../../../../../pages/ProductsPage";
+import ProductCategoriesPage from "../../../../../pages/ProductCategoriesPage";
+import { Layout } from "../../ui/Layout";
 
-const authorizedRouter = createBrowserRouter([
+export const authorizedRouter = createBrowserRouter([
     {
         element: <Layout />,
         children: [
@@ -16,5 +16,3 @@ const authorizedRouter = createBrowserRouter([
         ],
     },
 ]);
-
-export default authorizedRouter;
