@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
-import { ChangeEvent } from "react";
+import { ChangeEvent, FocusEvent } from "react";
 
-type InputProps = {
+export type InputProps = {
     value: string;
     name: string;
     label?: string;
@@ -9,7 +9,8 @@ type InputProps = {
     error?: boolean;
     helperText?: string;
     type?: "password";
-    onChange: (value: string) => void;
+    onChange: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+    onBlur?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 };
 
 export const Input = ({
@@ -21,6 +22,7 @@ export const Input = ({
     helperText,
     type,
     onChange,
+    onBlur,
 }: InputProps) => {
     return (
         <TextField
@@ -33,9 +35,8 @@ export const Input = ({
             type={type}
             variant={"outlined"}
             size="small"
-            onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                onChange(event.target.value)
-            }
+            onChange={onChange}
+            onBlur={onBlur}
         />
     );
 };
