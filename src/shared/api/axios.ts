@@ -42,8 +42,10 @@ const fetchAsync = async <T>(
     }
 };
 
-export const getAsync = async <T>(url: string) =>
-    await fetchAsync(() => axiosInstance.get<T>(url, jsonConfig));
+export const getAsync = async <T>(url: string, params?: object) =>
+    await fetchAsync(() =>
+        axiosInstance.get<T>(url, params ? { ...jsonConfig, params } : jsonConfig),
+    );
 
 export const postAsync = async <TReq, TResp>(url: string, body: TReq) =>
     await fetchAsync(() => axiosInstance.post<TResp>(url, body, jsonConfig));
