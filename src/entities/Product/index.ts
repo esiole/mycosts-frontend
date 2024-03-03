@@ -1,3 +1,5 @@
+export { ProductForm } from "./ui/ProductForm";
 export { ProductList } from "./ui/ProductList";
-export { getProducts } from "./api/productApi";
+export { addProduct, getProducts } from "./api/productApi";
 export type { IProduct } from "./model/types/product";
+export type { ProductFormFields } from "./model/types/productFormFields";
