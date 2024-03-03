@@ -1,5 +1,15 @@
+import { useApiRequest } from "../shared/lib/hooks/useApiRequest";
+import { getReceipts, ReceiptList } from "../entities/Receipt";
+
 const ReceiptsPage = () => {
-    return <div>Receipts page</div>;
+    const [receipts] = useApiRequest(getReceipts);
+
+    return (
+        <div>
+            <div>Receipts page</div>
+            <ReceiptList receipts={receipts || []} />
+        </div>
+    );
 };
 
 export default ReceiptsPage;
