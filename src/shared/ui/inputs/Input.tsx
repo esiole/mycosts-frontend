@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { InputAdornment, TextField } from "@mui/material";
 import { ChangeEvent, FocusEvent } from "react";
 
 export type InputProps = {
@@ -9,6 +9,7 @@ export type InputProps = {
     error?: boolean;
     helperText?: string;
     type?: "password" | "date";
+    endAdornment?: string;
     onChange: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     onBlur?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 };
@@ -21,6 +22,7 @@ export const Input = ({
     error,
     helperText,
     type,
+    endAdornment,
     onChange,
     onBlur,
 }: InputProps) => {
@@ -35,6 +37,15 @@ export const Input = ({
             type={type}
             variant={"outlined"}
             size="small"
+            InputProps={
+                endAdornment
+                    ? {
+                          endAdornment: (
+                              <InputAdornment position="end">{endAdornment}</InputAdornment>
+                          ),
+                      }
+                    : undefined
+            }
             onChange={onChange}
             onBlur={onBlur}
         />

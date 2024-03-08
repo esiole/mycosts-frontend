@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { InputAdornment, TextField } from "@mui/material";
 import { ChangeEvent, FocusEvent } from "react";
 
 const ignorableSymbols = ["e", "E", "-", "+"];
@@ -13,6 +13,7 @@ export type NumberInputProps = {
     disabled?: boolean;
     error?: boolean;
     helperText?: string;
+    endAdornment?: string;
     onChange: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     onBlur?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 };
@@ -27,6 +28,7 @@ export const NumberInput = ({
     disabled,
     error,
     helperText,
+    endAdornment,
     onChange,
     onBlur,
 }: NumberInputProps) => {
@@ -46,6 +48,15 @@ export const NumberInput = ({
                 min: min,
                 max: max,
             }}
+            InputProps={
+                endAdornment
+                    ? {
+                          endAdornment: (
+                              <InputAdornment position="end">{endAdornment}</InputAdornment>
+                          ),
+                      }
+                    : undefined
+            }
             onChange={onChange}
             onBlur={onBlur}
             onKeyDown={(event) => ignorableSymbols.includes(event.key) && event.preventDefault()}
