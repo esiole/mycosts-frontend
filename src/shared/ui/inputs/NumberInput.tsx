@@ -4,7 +4,7 @@ import { ChangeEvent, FocusEvent } from "react";
 const ignorableSymbols = ["e", "E", "-", "+"];
 
 export type NumberInputProps = {
-    value: number;
+    value: number | null;
     name: string;
     label?: string;
     min?: number;
@@ -34,7 +34,7 @@ export const NumberInput = ({
 }: NumberInputProps) => {
     return (
         <TextField
-            value={value}
+            value={value ?? ""}
             name={name}
             label={label}
             disabled={disabled}

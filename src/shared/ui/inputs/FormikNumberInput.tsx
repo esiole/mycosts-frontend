@@ -4,7 +4,7 @@ import { NumberInput, NumberInputProps } from "./NumberInput";
 type FormikNumberInputProps = Omit<NumberInputProps, "value" | "onChange" | "onBlur">;
 
 export const FormikNumberInput = ({ name, ...props }: FormikNumberInputProps) => {
-    const [field, meta] = useField(name);
+    const [field, meta, helpers] = useField(name);
 
     const error = Boolean(meta.error) && meta.touched;
 
@@ -15,7 +15,10 @@ export const FormikNumberInput = ({ name, ...props }: FormikNumberInputProps) =>
             name={field.name}
             error={error}
             helperText={error ? meta.error : undefined}
-            onChange={field.onChange}
+            onChange={(event) => {
+                if (event.target.value === "") helpers.setValue(null);
+                else field.onChange(event);
+            }}
             onBlur={field.onBlur}
         />
     );
