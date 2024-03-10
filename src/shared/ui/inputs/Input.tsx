@@ -8,7 +8,7 @@ export type InputProps = {
     disabled?: boolean;
     error?: boolean;
     helperText?: string;
-    type?: "password" | "date";
+    type?: "password" | "email" | "date";
     endAdornment?: string;
     onChange: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     onBlur?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
