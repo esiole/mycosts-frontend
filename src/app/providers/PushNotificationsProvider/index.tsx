@@ -31,12 +31,17 @@ export const PushNotificationsProvider = ({ children }: PropsWithChildren) => {
         setNotifications((prev) => [...prev, newNotification]);
     };
 
+    const addInDevelopmentNotification = () =>
+        addNotification("Этот функционал ещё находится в разработке", "error");
+
     const handleClose = (_: any, reason?: string) => reason !== "clickaway" && setOpen(false);
 
     const handleExited = () => setOpenedNotification(null);
 
     return (
-        <PushNotificationsContext.Provider value={{ addNotification }}>
+        <PushNotificationsContext.Provider
+            value={{ addNotification, addInDevelopmentNotification }}
+        >
             {children}
             <Snackbar
                 key={openedNotification ? openedNotification.key : undefined}

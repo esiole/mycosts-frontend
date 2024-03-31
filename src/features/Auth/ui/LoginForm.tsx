@@ -21,7 +21,7 @@ const validationSchema = Yup.object<LoginRequest>({
 export const LoginForm = () => {
     const dispatch = useAppDispatch();
 
-    const { addNotification } = usePushNotifications();
+    const { addInDevelopmentNotification } = usePushNotifications();
 
     const handleSubmit = async (values: LoginRequest) => {
         const response = await login(values);
@@ -30,7 +30,7 @@ export const LoginForm = () => {
             localStorage.setItem(TOKEN_LOCAL_STORAGE_KEY, response.data.jwtToken);
             dispatch(auth({ email: response.data.email }));
         } else {
-            addNotification("Не удалось авторизоваться в приложении", "error");
+            addInDevelopmentNotification();
         }
     };
 
@@ -44,12 +44,7 @@ export const LoginForm = () => {
             >
                 <Typography variant="h5">Вход</Typography>
                 {/* TODO: Finish a registration function */}
-                <Typography
-                    variant="body2"
-                    onClick={() =>
-                        addNotification("Этот функционал ещё находится в разработке", "error")
-                    }
-                >
+                <Typography variant="body2" onClick={addInDevelopmentNotification}>
                     <AppLink to={""} underline="hover">
                         Ещё нет аккаунта?
                     </AppLink>
@@ -68,15 +63,7 @@ export const LoginForm = () => {
                             <FormikInput name={"password"} label={"Пароль"} type={"password"} />
                             <Stack direction="row" alignItems="center" justifyContent="end">
                                 {/* TODO: Finish a resetting password function */}
-                                <Typography
-                                    variant="body2"
-                                    onClick={() =>
-                                        addNotification(
-                                            "Этот функционал ещё находится в разработке",
-                                            "error",
-                                        )
-                                    }
-                                >
+                                <Typography variant="body2" onClick={addInDevelopmentNotification}>
                                     <AppLink to={""} underline="hover">
                                         Забыли пароль?
                                     </AppLink>
